@@ -1,0 +1,9 @@
+streamlit
+pandas
+geopandas
+rasterio
+requests
+geopy
+shapely
+matplotlib
+certifi
