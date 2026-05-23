@@ -141,7 +141,7 @@ if analysis_started:
                 st.markdown(f"""
                 <div class="pvd-card">
                     <div class="pvd-kpi-lbl">Sonnenertrag (PVOUT)</div>
-                    <div class="pvd-kpi-val">{pv_wert:'.0f}</div>
+                    <div class="pvd-kpi-val">{pv_wert:,.0f}</div>
                     <div class="pvd-kpi-lbl">kWh / kWp / Jahr</div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -159,7 +159,7 @@ if analysis_started:
                 st.markdown(f"""
                 <div class="pvd-card">
                     <div class="pvd-kpi-lbl">PV-Attraktivitätsscore</div>
-                    <div class="pvd-kpi-val">{score:'.0f}</div>
+                    <div class="pvd-kpi-val">{score:,.0f}</div>
                     <div class="pvd-kpi-lbl">Punkte (höher = besser)</div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -173,7 +173,7 @@ if analysis_started:
             with c_right:
                 st.subheader("💡 Einschätzung")
                 st.write(f"Eine typische 5‑kWp‑Hausanlage spart in **{g_name}** ca.")
-                st.metric("Ersparnis pro Jahr", f"CHF {potential_saving:'.2f}")
+                st.metric("Ersparnis pro Jahr", f"CHF {potential_saving:,.2f}")
                 st.info(
                     "Der Score kombiniert lokale Sonneneinstrahlung "
                     "und Strompreis. Höhere Werte bedeuten schnellere Amortisation."
