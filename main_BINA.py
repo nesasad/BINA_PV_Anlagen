@@ -169,15 +169,12 @@ if analysis_started:
                 st.subheader("🗺️ Landkarte")
                 st.map(pd.DataFrame({"lat": [lat], "lon": [lon]}))
 
-             with c_right:
+            with c_right:
                 st.subheader("💡 Einschätzung")
                 st.write(f"Eine typische 5‑kWp‑Hausanlage spart in **{g_name}** ca.")
                 
-                # 1. Zahl formatieren und Schweizer Hochkomma setzen
-                ersparnis_formatiert = f"{potential_saving:,.2f}".replace(",", "'")
-                
-                # 2. In die Metric einfügen
-                st.metric("Ersparnis pro Jahr", f"CHF {ersparnis_formatiert}")
+                # Hier wird erst die Zahl formatiert, die Kommas ersetzt und das "CHF " davorgehängt
+                st.metric("Ersparnis pro Jahr", f"CHF {potential_saving:,.2f}".replace(",", "'"))
                 
                 st.info(
                     "Der Score kombiniert lokale Sonneneinstrahlung "
