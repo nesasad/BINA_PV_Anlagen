@@ -84,7 +84,6 @@ st.markdown(
 )
 
 st.markdown("### 📍 Adresse eingeben")
-st.caption("z.B. Zollstrasse 17, 8005 Zürich")
 
 address_input = st.text_input(
     "Strasse und Ort",
@@ -159,10 +158,10 @@ if analysis_started:
                 st.markdown(f"""
                 <div class="pvd-card">
                     <div class="pvd-kpi-lbl">PV-Attraktivitätsscore</div>
-                    <div class="pvd-kpi-val">{score:.0f}</div>
+                    <div class="pvd-kpi-val">{score:,.0f}</div>
                     <div class="pvd-kpi-lbl">Punkte (höher = besser)</div>
                 </div>
-                """, unsafe_allow_html=True)
+                """.replace(",", "'"), unsafe_allow_html=True)
 
             c_left, c_right = st.columns([2, 1])
 
