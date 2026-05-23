@@ -190,7 +190,7 @@ if analysis_started:
             st.warning(
                 "»Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n"
                 "**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉\n\n"
-                "Ihre Adresse liegt außerhalb unseres Datensatzes. Für Orte außerhalb der Schweiz "
+                "Ihre Adresse liegt ausserhalb unseres Datensatzes. Für Orte außerhalb der Schweiz "
                 "haben wir leider keine lokalen Stromtarife parat. Bitte versuchen Sie es mit einer Schweizer Adresse."
             )
     else:
