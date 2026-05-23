@@ -132,7 +132,7 @@ if analysis_started:
             score = pv_wert * tarif_val
             potential_saving = pv_wert * 5 * (tarif_val / 100)
 
-            st.success(f"Gefunden: {full_address} (Gemeinde: {g_name})")
+            st.success(f"Gefunden: {saubere_adresse} (Gemeinde: {g_name})")
 
             col1, col2, col3 = st.columns(3)
 
