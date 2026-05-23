@@ -124,7 +124,7 @@ if analysis_started:
 
         match = gpd.sjoin(point_gdf, gdf_gemeinden, how="left", predicate="within")
 
-        # Verhindert den Absturz bei Adressen außerhalb der Schweiz
+        # Verhindert den Absturz bei Adressen ausserhalb der Schweiz
         if not match.empty and "bfs_nummer" in match.columns and pd.notna(match["bfs_nummer"].iloc[0]):
             bfs_nr = int(match["bfs_nummer"].iloc[0])
             g_name = match["name"].iloc[0]
@@ -191,7 +191,7 @@ if analysis_started:
                 "Wow, die Sonne scheint zwar überall, aber unser Schweizer PV-Check hat gerade die Landkarte hochgehalten und gemeint: „Hoi, das ist ja gar kein Schweizer Boden!“",
                 "Da wir uns rein auf die Eidgenossenschaft konzentrieren, können wir das Potenzial für Adressen im Ausland leider nicht berechnen. Die Solarmodule würden sonst vermutlich auch das Gefühl haben, sie wären im falschen Land.",
                 "Falls Sie einen Standort in der Schweiz haben, schauen wir gerne wieder vorbei – mit dem typischen Schweizer Pünktchen: Wir rechnen erst, wenn alles passt.",
-                "»Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉"
+                "Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉"
             ]
             
             # Wählt bei jedem Klick zufällig eines der Zitate aus
