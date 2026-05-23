@@ -188,10 +188,10 @@ if analysis_started:
         else:
             # Liste deiner Zitate + das Wittgenstein-Zitat von vorhin
             quotes = [
-                "Wow, die Sonne scheint zwar überall, aber unser Schweizer PV-Check hat gerade die Landkarte hochgehalten und gemeint: „Hoi, das ist ja gar kein Schweizer Boden!“",
+                "Wow, die Sonne scheint zwar überall, aber unser Schweizer PV-Check hat gerade die Landkarte hochgehalten und gemeint: «Hoi, das ist ja gar kein Schweizer Boden!»",
                 "Da wir uns rein auf die Eidgenossenschaft konzentrieren, können wir das Potenzial für Adressen im Ausland leider nicht berechnen. Die Solarmodule würden sonst vermutlich auch das Gefühl haben, sie wären im falschen Land.",
                 "Falls Sie einen Standort in der Schweiz haben, schauen wir gerne wieder vorbei mit dem typischen Schweizer Pünktchen: Wir rechnen erst, wenn alles passt.",
-                "Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt. «*Ludwig Wittgenstein*» ...und die Grenze dieser App ist leider die Schweizer Landesgrenze! 😉"
+                "«*Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.*» Ludwig Wittgenstein ...und die Grenze dieser App ist leider die Schweizer Landesgrenze! 😉"
             ]
             
             # Wählt bei jedem Klick zufällig eines der Zitate aus
