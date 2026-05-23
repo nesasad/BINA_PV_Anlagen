@@ -3,6 +3,7 @@ import pandas as pd
 import geopandas as gpd
 import rasterio
 import requests
+import random  # Neu importiert für das Zufallsprinzip
 from geopy.geocoders import Nominatim
 from shapely.geometry import Point
 
@@ -185,14 +186,20 @@ if analysis_started:
                     "und Strompreis. Höhere Werte bedeuten schnellere Amortisation."
                 )
         else:
-            # Witziges Zitat für Standorte außerhalb der Schweiz
+            # Liste deiner Zitate + das Wittgenstein-Zitat von vorhin
+            quotes = [
+                "Wow, die Sonne scheint zwar überall, aber unser Schweizer PV-Check hat gerade die Landkarte hochgehalten und gemeint: „Hoi, das ist ja gar kein Schweizer Boden!“",
+                "Da wir uns rein auf die Eidgenossenschaft konzentrieren, können wir das Potenzial für Adressen im Ausland leider nicht berechnen. Die Solarmodule würden sonst vermutlich auch das Gefühl haben, sie wären im falschen Land.",
+                "Falls Sie einen Standort in der Schweiz haben, schauen wir gerne wieder vorbei – mit dem typischen Schweizer Pünktchen: Wir rechnen erst, wenn alles passt.",
+                "»Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉"
+            ]
+            
+            # Wählt bei jedem Klick zufällig eines der Zitate aus
+            selected_quote = random.choice(quotes)
+            
             st.info("### 🏔️ Huch, ein Blick über den Tellerrand!")
-            st.warning(
-                "»Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n"
-                "**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉\n\n"
-                "Ihre Adresse liegt ausserhalb unseres Datensatzes. Für Orte außerhalb der Schweiz "
-                "haben wir leider keine lokalen Stromtarife parat. Bitte versuchen Sie es mit einer Schweizer Adresse."
-            )
+            st.warning(selected_quote)
+            
     else:
         st.warning("Adresse konnte überhaupt nicht gefunden werden. Bitte präziser eingeben.")
 
