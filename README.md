@@ -8,6 +8,8 @@ Die App ist live auf Streamlit Cloud verfügbar:
 
 ---
 
+Test
+
 ## Data-Driven Decision-Making (DDDM)
 Das Projekt folgt konsequent dem Ansatz der **datenbasierten Entscheidungsfindung (DDDM)**. Anstatt Investitionsentscheidungen für Photovoltaikanlagen auf vagen Schätzungen oder globalen Durchschnittswerten aufzubauen, aggregiert und analysiert diese App primäre, hochaufgelöste Geodaten und Tarife:
 
