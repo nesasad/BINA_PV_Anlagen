@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import gpd as gpd # Hinweis: Falls nötig, wieder als "import geopandas as gpd" ausschreiben
 import geopandas as gpd
 import rasterio
 import requests
@@ -58,16 +59,22 @@ def geocode_address(address):
     except:
         pass
 
-    geolocator = Nominatim(user_agent="pv_app")
-    location = geolocator.geocode(address)
-    if location:
-        return location.latitude, location.longitude, location.address
+    try:
+        geolocator = Nominatim(user_agent="pv_app")
+        location = geolocator.geocode(address)
+        if location:
+            return location.latitude, location.longitude, location.address
+    except:
+        pass
 
     return None, None, None
 
 def get_pv_value(tif, lat, lon):
-    for val in tif.sample([(lon, lat)]):
-        return float(val[0])
+    try:
+        for val in tif.sample([(lon, lat)]):
+            return float(val[0])
+    except:
+        pass
     return 0.0
 
 # --- UI ---
@@ -115,9 +122,12 @@ if analysis_started:
             crs="EPSG:4326"
         ).to_crs(gdf_gemeinden.crs)
 
+        # Räumlicher Join mit den Schweizer Gemeinden
         match = gpd.sjoin(point_gdf, gdf_gemeinden, how="left", predicate="within")
 
-        if not match.empty and "bfs_nummer" in match.columns:
+        # HIER WURDE DIE LOGIK KORRIGIERT: 
+        # Es wird explizit geprüft, ob eine gültige BFS-Nummer gefunden wurde und match nicht leer ist
+        if not match.empty and "bfs_nummer" in match.columns and pd.notna(match["bfs_nummer"].iloc[0]):
             bfs_nr = int(match["bfs_nummer"].iloc[0])
             g_name = match["name"].iloc[0]
 
@@ -128,7 +138,6 @@ if analysis_started:
                 else 25.0
             )
 
-            # Dimensionsloser Attraktivitäts-Score
             score = pv_wert * tarif_val
             potential_saving = pv_wert * 5 * (tarif_val / 100)
 
@@ -172,8 +181,6 @@ if analysis_started:
             with c_right:
                 st.subheader("💡 Einschätzung")
                 st.write(f"Eine typische 5‑kWp‑Hausanlage spart in **{g_name}** ca.")
-                
-                # Hier wird erst die Zahl formatiert, die Kommas ersetzt und das "CHF " davorgehängt
                 st.metric("Ersparnis pro Jahr", f"CHF {potential_saving:,.2f}".replace(",", "'"))
                 
                 st.info(
@@ -181,9 +188,16 @@ if analysis_started:
                     "und Strompreis. Höhere Werte bedeuten schnellere Amortisation."
                 )
         else:
-            st.error("Die Adresse konnte keiner Schweizer Gemeinde zugeordnet werden.")
+            # Witziges Zitat für Adressen außerhalb der Schweiz / im "großen Kanton"
+            st.info("### 🏔️ Huch, ein Blick über den Tellerrand!")
+            st.warning(
+                "»Die Grenzen meiner Sprache bedeuten die Grenzen meiner Welt.« – *Ludwig Wittgenstein*\n\n"
+                "**...und die Grenze dieser App ist leider die Schweizer Landesgrenze!** 😉\n\n"
+                "Ihre Adresse liegt außerhalb unseres Datensatzes. Für den 'großen Kanton' oder den Rest der Welt "
+                "haben wir leider keine Stromtarife parat. Bitte versuchen Sie es mit einer Schweizer Adresse."
+            )
     else:
-        st.warning("Adresse konnte nicht gefunden werden. Bitte präziser eingeben.")
+        st.warning("Adresse konnte überhaupt nicht gefunden werden. Bitte präziser eingeben.")
 
 # --- PLATZHALTER ---
 if not analysis_started:
