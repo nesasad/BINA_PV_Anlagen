@@ -141,7 +141,7 @@ if analysis_started:
                 st.markdown(f"""
                 <div class="pvd-card">
                     <div class="pvd-kpi-lbl">Sonnenertrag (PVOUT)</div>
-                    <div class="pvd-kpi-val">{pv_wert:_.0f}</div>
+                    <div class="pvd-kpi-val">{pv_wert:'.0f}</div>
                     <div class="pvd-kpi-lbl">kWh / kWp / Jahr</div>
                 </div>
                 """, unsafe_allow_html=True)
