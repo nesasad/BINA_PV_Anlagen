@@ -7,7 +7,7 @@ Die App ist live auf Streamlit Cloud verfügbar:
 **[binapvanlagen.streamlit.app](https://binapvanlagen.streamlit.app)**
 
 ---
-**Anleitung: Notebook von GitHub in Colab öffnen**
+**Anleitung Notebook von GitHub in Colab öffnen**
 1. Öffne **[https://colab.research.google.com](https://colab.research.google.com)**
 2. Klicke auf "Github"
 <img width="679" height="526" alt="Bildschirmfoto 2026-05-23 um 20 28 47" src="https://github.com/user-attachments/assets/2b556ad1-0f10-4eff-b3c0-b901ea00b600" />
